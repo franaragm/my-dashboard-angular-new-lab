@@ -7,14 +7,14 @@ export const routes: Routes = [
         loadComponent: () => import('./dashboard/dashboard.component'),
         children: [
             {
-                path: 'change-detection',
-                title: 'Change Detection',
-                loadComponent: () => import('./dashboard/pages/change-detection/change-detection.component'),
-            },
-            {
                 path: 'control-flow',
                 title: 'Control Flow',
                 loadComponent: () => import('./dashboard/pages/control-flow/control-flow.component'),
+            },
+            {
+                path: 'change-detection',
+                title: 'Change Detection',
+                loadComponent: () => import('./dashboard/pages/change-detection/change-detection.component'),
             },
             {
                 path: 'defer-options',
