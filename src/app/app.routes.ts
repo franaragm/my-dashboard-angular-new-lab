@@ -17,6 +17,11 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/change-detection/change-detection.component'),
             },
             {
+                path: 'two-way',
+                title: 'Two Way',
+                loadComponent: () => import('./dashboard/pages/two-way/two-way.component'),
+            },
+            {
                 path: 'defer-options',
                 title: 'Defer Options',
                 loadComponent: () => import('./dashboard/pages/defer-options/defer-options.component'),
