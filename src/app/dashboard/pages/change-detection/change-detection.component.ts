@@ -3,10 +3,9 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
 import { TitleComponent } from '@shared/title/title.component';
 
 @Component({
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TitleComponent],
-  template: `
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CommonModule, TitleComponent],
+    template: `
     <app-title [title]="currentFramework()" />
 
     <pre> {{ frameworkAsSignal() | json }} </pre>

@@ -9,9 +9,8 @@ import { switchMap } from 'rxjs';
 import { UsersService } from '@services/users.service';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, TitleComponent],
-  template: `
+    imports: [CommonModule, TitleComponent],
+    template: `
     <app-title [title]="titleLabel()" />
 
     @if( user() ) {
@@ -27,7 +26,7 @@ import { UsersService } from '@services/users.service';
     } @else {
     <p>Cargando información</p>
     }
-  `,
+  `
 })
 export default class UserComponent {
   private route = inject(ActivatedRoute);

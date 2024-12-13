@@ -4,10 +4,9 @@ import { HeavyLoadersFastComponent } from '@shared/heavy-loaders/heavy-loaders-f
 import { TitleComponent } from '@shared/title/title.component';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, HeavyLoadersFastComponent, TitleComponent ],
-  templateUrl: './defer-options.component.html',
-  styles: ``
+    imports: [CommonModule, HeavyLoadersFastComponent, TitleComponent],
+    templateUrl: './defer-options.component.html',
+    styles: ``
 })
 export default class DeferOptionsComponent {
 

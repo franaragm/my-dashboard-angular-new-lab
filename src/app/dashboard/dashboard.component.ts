@@ -4,13 +4,12 @@ import { SidemenuComponent } from '@shared/sidemenu/sidemenu.component';
 
 
 @Component({
-  standalone: true,
-  imports: [
-    RouterModule,
-    SidemenuComponent
-  ],
-  templateUrl: './dashboard.component.html',
-  styles: ``
+    imports: [
+        RouterModule,
+        SidemenuComponent
+    ],
+    templateUrl: './dashboard.component.html',
+    styles: ``
 })
 export default class DashboardComponent {
 

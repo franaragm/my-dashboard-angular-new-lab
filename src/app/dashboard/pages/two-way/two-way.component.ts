@@ -5,9 +5,8 @@ import { TabbedPaneComponent } from "./tabbed-pane.component";
 import { TabComponent } from "./tab.component";
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, TitleComponent, TabbedPaneComponent, TabComponent],
-  template: `
+    imports: [CommonModule, TitleComponent, TabbedPaneComponent, TabComponent],
+    template: `
     <app-title title="Two way" />
 
     <div class="pane-container">
@@ -39,7 +38,7 @@ import { TabComponent } from "./tab.component";
 
     
   `,
-  styles: `
+    styles: `
     .pane-container {
       margin-top: 20px;
       max-width: 600px;

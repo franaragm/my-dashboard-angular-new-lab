@@ -3,10 +3,9 @@ import { TabComponent } from './tab.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-tabbed-pane',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-tabbed-pane',
+    imports: [CommonModule],
+    template: `
   
 
     <div class="pane">
@@ -28,12 +27,12 @@ import { CommonModule } from '@angular/common';
       </article>
     </div>
   `,
-  styles: `
+    styles: `
     .pane .nav {
       margin-bottom: 10px;
       width:auto;
     }
-  `,
+  `
 })
 export class TabbedPaneComponent {
 

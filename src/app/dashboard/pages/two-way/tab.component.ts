@@ -2,10 +2,9 @@ import { Component, input, inject, computed } from '@angular/core';
 import { TabbedPaneComponent } from './tabbed-pane.component';
 
 @Component({
-  selector: 'app-tab',
-  standalone: true,
-  imports: [],
-  template: `
+    selector: 'app-tab',
+    imports: [],
+    template: `
     @if(visible()) {
       <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ title() }}</h2>
@@ -14,7 +13,7 @@ import { TabbedPaneComponent } from './tabbed-pane.component';
         </p>
       </div>
     }
-  `,
+  `
 })
 export class TabComponent {
     // se injecta el componente padre para acceder a sus propiedades

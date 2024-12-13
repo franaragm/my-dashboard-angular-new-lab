@@ -4,11 +4,10 @@ import { Product } from '@interfaces/product.interface';
 import { interval, take, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-input-output',
-  standalone: true,
-  imports: [ProductCardComponent],
-  templateUrl: './input-output.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-input-output',
+    imports: [ProductCardComponent],
+    templateUrl: './input-output.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class InputOutputComponent implements OnDestroy {
 

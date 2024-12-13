@@ -2,11 +2,10 @@ import { ChangeDetectionStrategy, Component, effect, input, output } from '@angu
 import { Product } from '@interfaces/product.interface';
 
 @Component({
-  selector: 'app-product-card',
-  standalone: true,
-  imports: [],
-  templateUrl: './product-card.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-product-card',
+    imports: [],
+    templateUrl: './product-card.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCardComponent {
   // @Input({

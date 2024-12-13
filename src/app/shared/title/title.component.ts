@@ -2,10 +2,9 @@ import { Component, Input, InputSignal, booleanAttribute, input } from '@angular
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-title',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-title',
+    imports: [CommonModule],
+    template: `
   <h1 class="text-3xl mb-5">{{ title() }}</h1>
   `
 })
