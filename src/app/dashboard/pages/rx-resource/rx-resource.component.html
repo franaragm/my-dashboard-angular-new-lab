@@ -1,3 +1,13 @@
 <app-title title="Listado de usuarios" />
 
-<p>rx-resource works!</p>,
+@switch(usersResource.status()) {
+    @case(1) {
+      <p>{{ errorMessage() }}</p>
+    }
+    @case(2) {
+      <p>Loading...</p>
+    }
+    @default {
+      <app-users-list [users]="users()" />
+    }
+}
