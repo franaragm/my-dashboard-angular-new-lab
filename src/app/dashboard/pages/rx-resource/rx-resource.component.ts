@@ -44,4 +44,11 @@ export default class RxResourceComponent {
 
   protected readonly status: Signal<string> = computed(() => ResourceStatus[this.usersResource.status()]);
 
+  /**
+   * metodo que ejecuta un reload (vuelve a ejecutar loade de rxResource)
+   */
+  protected reloadUsers(): void {
+    this.usersResource.reload();
+  }
+
 }

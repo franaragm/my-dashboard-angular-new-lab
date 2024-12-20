@@ -1,11 +1,18 @@
 <app-title title="Listado de usuarios" />
 
+<button class="p-2 bg-blue-500 rounded text-white" (click)="reloadUsers()">
+  Reload Users
+</button>
+
 @switch(status()) {
     @case('Error') {
       <p>{{ errorMessage() }}</p>
     }
     @case('Loading') {
       <p>Loading...</p>
+    }
+    @case('Reloading') {
+      <p>Reloading...</p>
     }
     @default {
       <app-users-list [users]="users()" />
