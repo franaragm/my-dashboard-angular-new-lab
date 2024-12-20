@@ -1,10 +1,10 @@
 <app-title title="Listado de usuarios" />
 
-@switch(usersResource.status()) {
-    @case(1) {
+@switch(status()) {
+    @case('Error') {
       <p>{{ errorMessage() }}</p>
     }
-    @case(2) {
+    @case('Loading') {
       <p>Loading...</p>
     }
     @default {
