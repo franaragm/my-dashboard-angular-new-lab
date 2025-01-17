@@ -62,6 +62,16 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/rx-resource/rx-resource.component'),
             },
             {
+                path: 'login',
+                title: 'Login',
+                loadComponent: () => import('./dashboard/pages/auth/login.component'),
+            },
+            {
+                path: 'register',
+                title: 'Register',
+                loadComponent: () => import('./dashboard/pages/auth/register.component'),
+            },
+            {
                 path: 'material',
                 title: 'Angular Material',
                 loadComponent: () => import('./dashboard/pages/material/material.component'),
