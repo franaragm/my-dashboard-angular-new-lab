@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withViewTransitions } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { routes } from './app.routes';
@@ -15,6 +15,7 @@ export const appConfig: ApplicationConfig = {
         //   console.log({transitionInfo});
         // },
       }),
+      withComponentInputBinding()
     ),
     // importación global de modulos como en appModule
     // importProvidersFrom(HttpClientModule),

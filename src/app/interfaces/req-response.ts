@@ -15,12 +15,20 @@ export interface UsersResponse {
   }
   
   export interface User {
-    id:         number;
+    id:         number | null;
     email:      string;
     first_name: string;
     last_name:  string;
     avatar:     string;
   }
+
+  export const NULL_USER: User = {
+    id: null,
+    email: '',
+    first_name: '',
+    last_name: '',
+    avatar: ''
+  };
   
   export interface Support {
     url:  string;

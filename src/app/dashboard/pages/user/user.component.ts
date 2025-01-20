@@ -41,8 +41,7 @@ export default class UserComponent {
 
   public titleLabel = computed(() => {
     if (this.user()) {
-      return `Información del usuario: ${this.user()?.first_name} ${this.user()?.last_name
-        } `;
+      return `Información del usuario: ${this.user()?.first_name} ${this.user()?.last_name} `;
     }
 
     return 'Información del usuario';
