@@ -22,6 +22,11 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/two-way/two-way.component'),
             },
             {
+                path: 'form-demo',
+                title: 'Form Demo',
+                loadComponent: () => import('./dashboard/pages/form-demo/form-demo.component'),
+            },
+            {
                 path: 'toast',
                 title: 'Toast Demo',
                 loadComponent: () => import('./dashboard/pages/toast-demo/toast-demo.component'),
