@@ -22,6 +22,11 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/two-way/two-way.component'),
             },
             {
+                path: 'toast',
+                title: 'Toast Demo',
+                loadComponent: () => import('./dashboard/pages/toast-demo/toast-demo.component'),
+            },
+            {
                 path: 'defer-options',
                 title: 'Defer Options',
                 loadComponent: () => import('./dashboard/pages/defer-options/defer-options.component'),
