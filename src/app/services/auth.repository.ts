@@ -16,6 +16,8 @@ import { LoginDto, RegisterDto, UserTokenDto } from "../dashboard/pages/auth/aut
 export class AuthRepository {
     private readonly http = inject(HttpClient);
     private readonly apiUrl = environment.apiUrl;
+    private readonly apiKey = environment.apiKey;
+    private readonly headers = { headers: { 'x-api-key': this.apiKey } };
 
     /**
      * Login the user
@@ -23,7 +25,7 @@ export class AuthRepository {
      * @returns the observable user token dto
      */
     public postLogin$(login: LoginDto): Observable<UserTokenDto> {
-        return this.http.post<UserTokenDto>(`${this.apiUrl}/login`, login);
+        return this.http.post<UserTokenDto>(`${this.apiUrl}/login`, login, this.headers);
     }
 
     /**
@@ -32,6 +34,6 @@ export class AuthRepository {
      * @returns the observable user token dto
      */
     public postRegister$(register: RegisterDto): Observable<UserTokenDto> {
-        return this.http.post<UserTokenDto>(`${this.apiUrl}/register`, register);
+        return this.http.post<UserTokenDto>(`${this.apiUrl}/register`, register, this.headers);
     }
 }

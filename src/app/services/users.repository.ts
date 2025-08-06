@@ -12,20 +12,22 @@ export class UsersRepository {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.apiUrl;
   private readonly usersEndpoint = `${this.apiUrl}/users`;
+  private readonly apiKey = environment.apiKey;
+  private readonly headers = { headers: { 'x-api-key': this.apiKey } };
 
   /**
    * Gets all users
    * @returns An observable of users
    */
   public getAllUsers$ = (): Observable<User[]> =>
-    this.http.get<UsersResponse>(this.usersEndpoint).pipe(
+    this.http.get<UsersResponse>(this.usersEndpoint, this.headers).pipe(
       delay(1500),
       map((resp: UsersResponse) => resp.data)
     );
 
   /* 
   getAllUsers$(): Observable<User[]> {
-    return this.http.get<UsersResponse>(this.usersEndpoint).pipe(
+    return this.http.get<UsersResponse>(this.usersEndpoint, this.headers).pipe(
       delay(1500),
       map((resp: UsersResponse) => resp.data)
     );
@@ -38,14 +40,14 @@ export class UsersRepository {
    * @returns An observable of user with the given id
    */
   public getUserById$ = (id: string): Observable<User> =>
-    this.http.get<UserResponse>(`${this.usersEndpoint}/${id}`).pipe(
+    this.http.get<UserResponse>(`${this.usersEndpoint}/${id}`, this.headers).pipe(
       delay(1500),
       map((resp: UserResponse) => resp.data)
     );
 
   /* 
   getUserById$(id: string): Observable<User> {
-    return this.http.get<UserResponse>(`https://reqres.in/api/users/${id}`)
+    return this.http.get<UserResponse>(`https://reqres.in/api/users/${id}`, this.headers)
       .pipe(
         delay(1500),
         map((resp: UserResponse) => resp.data)
