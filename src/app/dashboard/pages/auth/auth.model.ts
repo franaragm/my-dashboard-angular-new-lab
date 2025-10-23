@@ -10,7 +10,7 @@ export type UserTokenDto = {
  * The null user token
  */
 export const NULL_USER_TOKEN: UserTokenDto = {
-    id: '', 
+    id: '',
     token: ''
 };
 
@@ -20,19 +20,19 @@ export const NULL_USER_TOKEN: UserTokenDto = {
 export type LoginDto = {
     email: string;
     password: string;
-  };
-  
-  export const NULL_LOGIN_DTO: LoginDto = { email: '', password: '' };
+};
 
-  /**
- * The register data transfer object
- */
+export const NULL_LOGIN_DTO: LoginDto = { email: '', password: '' };
+
+/**
+* The register data transfer object
+*/
 export interface RegisterDto {
     email: string;
     password: string;
-  }
-  
-  /**
-   * The null register dto
-   */
-  export const NULL_REGISTER_DTO: RegisterDto = { email: '', password: '' };
+}
+
+/**
+ * The null register dto
+ */
+export const NULL_REGISTER_DTO: RegisterDto = { email: '', password: '' };

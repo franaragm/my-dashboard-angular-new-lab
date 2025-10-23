@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, ResourceRef, ResourceStatus, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, ResourceRef, Signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { User } from '@interfaces/req-response';
 import { UsersRepository } from '@services/users.repository';
@@ -24,9 +24,9 @@ export default class RxResourceComponent {
    * Resource of users
    * - Has signals with value, error, and working status
    */
-  private readonly usersResource: ResourceRef<User[]> = rxResource(
-    { loader: this.usersRepository.getAllUsers$ }
-  );
+  private readonly usersResource: ResourceRef<User[] | undefined> = rxResource<User[], void>({ 
+    stream: () => this.usersRepository.getAllUsers$(),
+  });
 
   /**
    * Array of users
@@ -42,7 +42,8 @@ export default class RxResourceComponent {
     () => ( this.usersResource.error() as { message: string } )['message'] || 'Unknown error'
   );
 
-  protected readonly status: Signal<string> = computed(() => ResourceStatus[this.usersResource.status()]);
+  // rxResource status() returns 'idle' | 'loading' | 'success' | 'error' | 'reloading'
+  protected readonly status: Signal<string> = computed(() => this.usersResource.status());
 
   /**
    * metodo que ejecuta un reload (vuelve a ejecutar loade de rxResource)

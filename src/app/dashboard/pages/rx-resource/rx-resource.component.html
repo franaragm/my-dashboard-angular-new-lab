@@ -5,13 +5,13 @@
 </button>
 
 @switch(status()) {
-    @case('Error') {
+    @case('error') {
       <p>{{ errorMessage() }}</p>
     }
-    @case('Loading') {
+    @case('loading') {
       <p>Loading...</p>
     }
-    @case('Reloading') {
+    @case('reloading') {
       <p>Reloading...</p>
     }
     @default {

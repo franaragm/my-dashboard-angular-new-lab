@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal, WritableSig
 import { AuthRepository } from '@services/auth.repository';
 import { TitleComponent } from '@shared/title/title.component';
 import { AuthStore } from './auth.store';
-import { LoginDto, NULL_LOGIN_DTO, NULL_USER_TOKEN } from './auth.model';
+import { LoginDto, NULL_LOGIN_DTO, NULL_USER_TOKEN, UserTokenDto } from './auth.model';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { of } from 'rxjs';
@@ -23,23 +23,21 @@ export default class LoginComponent {
   private readonly loginDto: WritableSignal<LoginDto> = signal<LoginDto>(NULL_LOGIN_DTO);
 
   /**
-   * con la condición del loader evitamos que al cargar el componente se haga automaticamente una llamada a api 
+   * con la condición del stream evitamos que al cargar el componente se haga automaticamente una llamada a api 
    * retornando un observable con undefined si los datos de login no estan seteados
    * 
-   * se lanza cuando el valor de signal loginDto cambia por el parametro request
+   * se lanza cuando el valor de signal loginDto cambia por el parametro params
    */
-  private readonly loginResource = rxResource({
-    request: () => this.loginDto(),
-    loader: (param) =>  {
-      if(this.loginDto() === NULL_LOGIN_DTO) {
-        return of(undefined);
-      }
-      return this.authRepository.postLogin$(param.request)
-    }
+  private readonly loginResource = rxResource<UserTokenDto | undefined, LoginDto>({
+    params: () => this.loginDto(),
+    stream: ({ params }) =>
+      params === NULL_LOGIN_DTO
+        ? of(undefined) // no hace llamada ni emite valor
+        : this.authRepository.postLogin$(params),
   });
 
   /**
-   * este effect se lanzará cada vez que el signal de loginResource cambie
+   * este effect se lanzará cada vez que el componente se monte y cada vez que el valor de loginResource cambie
    */
   private readonly storeEffect = effect(() => {
     const userToken = this.loginResource.value();

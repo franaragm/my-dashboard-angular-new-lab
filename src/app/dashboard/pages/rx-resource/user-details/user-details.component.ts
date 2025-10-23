@@ -32,8 +32,8 @@ export default class UserDetailsComponent {
   public readonly id: InputSignal<string> = input.required<string>();
 
   protected readonly userResource = rxResource({
-    request: () => this.id(),
-    loader: (param) => this.UsersRepository.getUserById$(param.request)
+    params: () => this.id(),
+    stream: ({ params }) => this.UsersRepository.getUserById$(params)
   });
 
   protected readonly user: Signal<User> =  computed(() => this.userResource.value() || NULL_USER);
