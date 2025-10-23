@@ -3,10 +3,18 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@shared/*": ["./src/app/shared/*"],
-      "@interfaces/*": ["./src/app/interfaces/*"],
-      "@services/*": ["./src/app/services/*"],
-      "@environments/*": ["./src/environments/*"]
+      "@shared/*": [
+        "./src/app/shared/*"
+      ],
+      "@interfaces/*": [
+        "./src/app/interfaces/*"
+      ],
+      "@services/*": [
+        "./src/app/services/*"
+      ],
+      "@environments/*": [
+        "./src/environments/*"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
@@ -19,7 +27,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
