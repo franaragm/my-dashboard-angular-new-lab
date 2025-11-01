@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
+import { environment } from '@environments/environment';
 
 import type { User, UserResponse, UsersResponse } from '@interfaces/req-response';
 import { delay, map } from 'rxjs';
@@ -15,6 +16,10 @@ interface State {
 export class UsersService {
 
   private http = inject(HttpClient);
+  private readonly apiUrl = environment.apiUrl;
+  private readonly usersEndpoint = `${this.apiUrl}/users`;
+  private readonly apiKey = environment.apiKey;
+  private readonly headers = { headers: { 'x-api-key': this.apiKey } };
 
   #state = signal<State>({
     loading: true,
@@ -26,7 +31,7 @@ export class UsersService {
 
   constructor() {
 
-    this.http.get<UsersResponse>('https://reqres.in/api/users')
+    this.http.get<UsersResponse>(this.usersEndpoint, this.headers)
       .pipe(delay(1500))
       .subscribe(res => {
 
@@ -40,7 +45,7 @@ export class UsersService {
   }
 
   getUserById(id: string) {
-    return this.http.get<UserResponse>(`https://reqres.in/api/users/${id}`)
+    return this.http.get<UserResponse>(`${this.usersEndpoint}/${id}`, this.headers)
       .pipe(
         delay(1500),
         map(resp => resp.data)
